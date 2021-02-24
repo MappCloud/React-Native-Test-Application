@@ -21,8 +21,8 @@ export default class MappButton extends PureComponent {
 
     handlePress = () => {
         Keyboard.dismiss();
-        // if(this.props.onPress())
-        // this.props.onPress();
+        if(this.props.onPress())
+        this.props.onPress();
     }
 
     render() {
