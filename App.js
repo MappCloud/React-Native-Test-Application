@@ -46,7 +46,7 @@ export default class App extends Component<Props> {
 
   constructor (props) {
     super(props);
-
+    Mapp.engage("5fd76d903c2247.21400126","1028993954364","TEST","264115","33")
 
   }
 
@@ -203,7 +203,12 @@ export default class App extends Component<Props> {
                 <MappButton
                     text={"Engage2"}
                     onPress={this.engageEvent2}/>
-
+                  <MappButton
+                      text={"Deep links"}
+                      onPress={this.addDeeplink}/>
+                  <MappButton
+                      text={"Push listener"}
+                      onPress={this.addPushListener}/>
               </View>
             </ImageBackground>
           </ScrollView>
@@ -315,6 +320,21 @@ export default class App extends Component<Props> {
   engageEvent2 = () => {
     Mapp.engage2()
   };
+
+  addDeeplink = () => {
+        Mapp.addDeepLinkingListener((notification) => {
+            console.log(JSON.stringify(notification));
+            Alert.alert(JSON.stringify(notification))
+        });
+    };
+  addPushListener = () => {
+        Mapp.addPushListener((notification) => {
+            console.log(JSON.stringify(notification));
+            Alert.alert(JSON.stringify(notification))
+        });
+    };
+
+
 
 }
 
