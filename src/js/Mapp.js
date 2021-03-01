@@ -13,6 +13,8 @@ import MappEventEmitter from './MappEventEmitter.js'
 const {RNMappPluginModule} = NativeModules;
 const EventEmitter = new MappEventEmitter();
 
+const IOS_INIT = "com.mapp.init";
+const IOS_INBOX_MESSAGES = "com.mapp.inbox_messages_received";
 const PUSH_RECEIVED_EVENT = "con.mapp.rich_message_received";
 const MappIntentEvent = "com.mapp.deep_link_received";
 
@@ -25,6 +27,12 @@ function convertEventEnum(type: EventName): ?string {
     }
     else if (type === 'deepLink') {
         return MappIntentEvent;
+    }
+    else if (type === 'iosSDKInit') {
+        return IOS_INIT;
+    }
+    else if (type === 'iosInboxMessages') {
+        return IOS_INBOX_MESSAGES;
     }
     throw new Error("Invalid event name: " + type);
 }
@@ -72,6 +80,9 @@ export class Mapp {
      */
 
     static engage(sdkKey: string, googleProjectId: string, cepURL: string, appID: string, tenantID: string) {
+        if (Platform.OS == 'ios') {
+            return RNMappPluginModule.autoengage(cepURL);
+        }
         return RNMappPluginModule.engage(sdkKey, googleProjectId, cepURL, appID, tenantID);
     }
 
