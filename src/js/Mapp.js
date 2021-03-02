@@ -39,7 +39,9 @@ function convertEventEnum(type: EventName): ?string {
 
 export type EventName = $Enum<{
     notificationResponse: string,
-    deepLink: string
+    deepLink: string,
+    iosSDKInit: string,
+    iosInboxMessages: string
 }>;
 
 export class Mapp {
@@ -294,6 +296,15 @@ export class Mapp {
         return this.addListener("deepLink", listener);
     }
 
+    //ios specific
+    static addInitListener(listener: Function): EmitterSubscription {
+        return this.addListener("iosSDKInit", listener);
+    }
+
+    static addInboxMessagesListener(listener: Function): EmitterSubscription {
+        return this.addListener("iosInboxMessages", listener);
+    }
+    //end ios
 
     static removePushListener(listener: Function): EmitterSubscription {
         return this.removeListener("notificationResponse", listener);

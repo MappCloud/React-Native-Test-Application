@@ -46,24 +46,12 @@ export default class App extends Component<Props> {
 
   constructor (props) {
     super(props);
-
-    // Mapp.addListener("iosSDKInit", (notification) => {
-    //   console.log(JSON.stringify(notification));
-    // });
-    // Mapp.onInitCompletedListener();
-
     Mapp.engage("5fd76d903c2247.21400126","1028993954364","TEST","264115","33")
 
   }
 
   handleTextChange = (type) => (text) => {
     this.setState({[type]: text});
-  }
-
-  componentDidMount() {
-
-    //needed for iOS only to check if SDK is ready
-
   }
 
   render() {
@@ -271,15 +259,13 @@ export default class App extends Component<Props> {
   };
   fetchInbox = () => {
     Mapp.fetchInboxMessage().then(data => {
-      Alert.alert(JSON.stringify(data))
       if (Platform.OS == "ios") {
-        //set listener
-        Mapp.addListener(
-          'iosInboxMessages',
+        Mapp.addInboxMessagesListener(
           (messages) => {
-            console.log('Messages received');
-            console.log(messages);
+            Alert.alert(JSON.stringify(messages))
           });
+      } else {
+        Alert.alert(JSON.stringify(data))
       }
     });
   };
@@ -298,15 +284,13 @@ export default class App extends Component<Props> {
   fetchMultipleMessages = () => {
 
     Mapp.fetchInboxMessage().then(data => {
-      Alert.alert(JSON.stringify(data))
       if (Platform.OS == "ios") {
-        //set listener
-        Mapp.addListener(
-          'iosInboxMessages',
+        Mapp.addInboxMessagesListener(
           (messages) => {
-            console.log('Messages received');
-            console.log(messages);
+            Alert.alert(JSON.stringify(messages))
           });
+      } else {
+        Alert.alert(JSON.stringify(data))
       }
     });
   };
