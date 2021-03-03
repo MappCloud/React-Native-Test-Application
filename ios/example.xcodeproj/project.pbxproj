@@ -19,6 +19,9 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8B8E884A1DEBDFC501A0702D /* libPods-example-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC53B726632323483001DACA /* libPods-example-tvOS.a */; };
 		8F37B7D925ED4F9E0035EEBD /* AppoxeeConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F37B7D825ED4F9E0035EEBD /* AppoxeeConfig.plist */; };
+		8F4E1B3E25EFC18500159083 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F4E1B3D25EFC18500159083 /* NotificationService.m */; };
+		8F4E1B4225EFC18500159083 /* ExtensionForExample.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8F4E1B3A25EFC18500159083 /* ExtensionForExample.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8F4E1B5225EFD25100159083 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F4E1B3D25EFC18500159083 /* NotificationService.m */; };
 		CABF84407D7ADFB7981685E0 /* libPods-example-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C8E6EA7990A7118BB9BA9C /* libPods-example-tvOSTests.a */; };
 		E2BEEBC7C9280F9B48FFE465 /* libPods-example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC03345B2B187A19EA7C98D1 /* libPods-example.a */; };
 /* End PBXBuildFile section */
@@ -38,7 +41,28 @@
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
 			remoteInfo = "example-tvOS";
 		};
+		8F4E1B4025EFC18500159083 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F4E1B3925EFC18500159083;
+			remoteInfo = ExtensionForExample;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8F4E1B4325EFC18500159083 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8F4E1B4225EFC18500159083 /* ExtensionForExample.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
@@ -60,6 +84,11 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = example/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8F37B7D825ED4F9E0035EEBD /* AppoxeeConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppoxeeConfig.plist; sourceTree = "<group>"; };
 		8F4E19F925EE731100159083 /* example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = example.entitlements; path = example/example.entitlements; sourceTree = "<group>"; };
+		8F4E1B3A25EFC18500159083 /* ExtensionForExample.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ExtensionForExample.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F4E1B3C25EFC18500159083 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
+		8F4E1B3D25EFC18500159083 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
+		8F4E1B3F25EFC18500159083 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F4E1B4C25EFC1B200159083 /* ExtensionForExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExtensionForExample.entitlements; sourceTree = "<group>"; };
 		A4C8E6EA7990A7118BB9BA9C /* libPods-example-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-example-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC03345B2B187A19EA7C98D1 /* libPods-example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF4CE43DE73E4A82B8FCC1DD /* Pods-example-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-example-tvOSTests/Pods-example-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +131,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CABF84407D7ADFB7981685E0 /* libPods-example-tvOSTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F4E1B3725EFC18500159083 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +203,7 @@
 				13B07FAE1A68108700A75B9A /* example */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* exampleTests */,
+				8F4E1B3B25EFC18500159083 /* ExtensionForExample */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				8B0430F9AE3BB6718AE507D3 /* Pods */,
@@ -183,6 +220,7 @@
 				00E356EE1AD99517003FC87E /* exampleTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* example-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* example-tvOSTests.xctest */,
+				8F4E1B3A25EFC18500159083 /* ExtensionForExample.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -200,6 +238,17 @@
 				AF4CE43DE73E4A82B8FCC1DD /* Pods-example-tvOSTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		8F4E1B3B25EFC18500159083 /* ExtensionForExample */ = {
+			isa = PBXGroup;
+			children = (
+				8F4E1B4C25EFC1B200159083 /* ExtensionForExample.entitlements */,
+				8F4E1B3C25EFC18500159083 /* NotificationService.h */,
+				8F4E1B3D25EFC18500159083 /* NotificationService.m */,
+				8F4E1B3F25EFC18500159083 /* Info.plist */,
+			);
+			path = ExtensionForExample;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,10 +285,12 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				11438688CC1ECB4876A59D47 /* [CP] Copy Pods Resources */,
+				8F4E1B4325EFC18500159083 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8F4E1B4125EFC18500159083 /* PBXTargetDependency */,
 			);
 			name = example;
 			productName = example;
@@ -285,6 +336,23 @@
 			productReference = 2D02E4901E0B4A5D006451C7 /* example-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		8F4E1B3925EFC18500159083 /* ExtensionForExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F4E1B4625EFC18500159083 /* Build configuration list for PBXNativeTarget "ExtensionForExample" */;
+			buildPhases = (
+				8F4E1B3625EFC18500159083 /* Sources */,
+				8F4E1B3725EFC18500159083 /* Frameworks */,
+				8F4E1B3825EFC18500159083 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ExtensionForExample;
+			productName = ExtensionForExample;
+			productReference = 8F4E1B3A25EFC18500159083 /* ExtensionForExample.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -310,6 +378,11 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2D02E47A1E0B4A5D006451C7;
 					};
+					8F4E1B3925EFC18500159083 = {
+						CreatedOnToolsVersion = 12.0.1;
+						DevelopmentTeam = LERY366S7C;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "example" */;
@@ -329,6 +402,7 @@
 				00E356ED1AD99517003FC87E /* exampleTests */,
 				2D02E47A1E0B4A5D006451C7 /* example-tvOS */,
 				2D02E48F1E0B4A5D006451C7 /* example-tvOSTests */,
+				8F4E1B3925EFC18500159083 /* ExtensionForExample */,
 			);
 		};
 /* End PBXProject section */
@@ -360,6 +434,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2D02E48E1E0B4A5D006451C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F4E1B3825EFC18500159083 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -584,6 +665,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				8F4E1B5225EFD25100159083 /* NotificationService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,6 +686,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8F4E1B3625EFC18500159083 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F4E1B3E25EFC18500159083 /* NotificationService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -616,6 +706,11 @@
 			isa = PBXTargetDependency;
 			target = 2D02E47A1E0B4A5D006451C7 /* example-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
+		};
+		8F4E1B4125EFC18500159083 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8F4E1B3925EFC18500159083 /* ExtensionForExample */;
+			targetProxy = 8F4E1B4025EFC18500159083 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -934,6 +1029,60 @@
 			};
 			name = Release;
 		};
+		8F4E1B4425EFC18500159083 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = ExtensionForExample/ExtensionForExample.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = LERY366S7C;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ExtensionForExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.testVladanRandjelovic.cep.VladanApoxeeTest.ExtensionForExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8F4E1B4525EFC18500159083 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = ExtensionForExample/ExtensionForExample.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = LERY366S7C;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ExtensionForExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.testVladanRandjelovic.cep.VladanApoxeeTest.ExtensionForExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -978,6 +1127,15 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F4E1B4625EFC18500159083 /* Build configuration list for PBXNativeTarget "ExtensionForExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F4E1B4425EFC18500159083 /* Debug */,
+				8F4E1B4525EFC18500159083 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
