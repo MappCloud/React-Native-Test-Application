@@ -209,6 +209,9 @@ export default class App extends Component<Props> {
                   <MappButton
                       text={"Push listener"}
                       onPress={this.addPushListener}/>
+                  <MappButton
+                      text={"Log out"}
+                      onPress={this.logOut}/>
               </View>
             </ImageBackground>
           </ScrollView>
@@ -348,6 +351,9 @@ export default class App extends Component<Props> {
         });
     };
 
+  logOut = () => {
+    Mapp.logOut(true);
+  }
 }
 
 const styles = StyleSheet.create({
