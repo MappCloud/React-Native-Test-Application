@@ -18,7 +18,7 @@ import {
   Alert
 } from 'react-native';
 
-import {MappEventEmitter, Mapp} from './src/js';
+import {Mapp} from 'react-native-mapp-plugin';
 import { MappButton, MappInputText, } from './src/components';
 
 const instructions = Platform.select({

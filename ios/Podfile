@@ -8,6 +8,8 @@ target 'example' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'RNMappPlugin', :path => '../node_modules/react-native-mapp-plugin'
+
   target 'exampleTests' do
     inherit! :complete
     # Pods for testing
