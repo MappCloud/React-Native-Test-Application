@@ -13,8 +13,12 @@ import MappEventEmitter from './MappEventEmitter.js'
 const {RNMappPluginModule} = NativeModules;
 const EventEmitter = new MappEventEmitter();
 
+const IOS_INIT = "com.mapp.init";
+const IOS_INBOX_MESSAGE = "com.mapp.inbox_message_received";
+const IOS_INBOX_MESSAGES = "com.mapp.inbox_messages_received";
 const PUSH_RECEIVED_EVENT = "con.mapp.rich_message_received";
 const MappIntentEvent = "com.mapp.deep_link_received";
+const IOS_RICH_MESSAGE = "com.mapp.rich_message";
 
 /**
  * @private
@@ -26,12 +30,28 @@ function convertEventEnum(type: EventName): ?string {
     else if (type === 'deepLink') {
         return MappIntentEvent;
     }
+    else if (type === 'iosSDKInit') {
+        return IOS_INIT;
+    }
+    else if (type === 'iosInboxMessages') {
+        return IOS_INBOX_MESSAGES;
+    }
+    else if (type === 'iosInboxMessage') {
+        return IOS_INBOX_MESSAGE;
+    }
+    else if (type === 'iosRichMessage') {
+        return IOS_RICH_MESSAGE;
+    }
     throw new Error("Invalid event name: " + type);
 }
 
 export type EventName = $Enum<{
     notificationResponse: string,
-    deepLink: string
+    deepLink: string,
+    iosSDKInit: string,
+    iosInboxMessages: string,
+    iosInboxMessage: string,
+    iosRichMessage: string
 }>;
 
 export class Mapp {
@@ -62,7 +82,9 @@ export class Mapp {
      */
 
     static engage2() {
-        return RNMappPluginModule.engage2();
+        if (Platform.OS == "android") {
+            return RNMappPluginModule.engage2();
+        }
     }
 
 
@@ -71,17 +93,24 @@ export class Mapp {
      *
      */
 
-    static engage(sdkKey: string, googleProjectId: string, cepURL: string, appID: string, tenantID: string) {
-        return RNMappPluginModule.engage(sdkKey, googleProjectId, cepURL, appID, tenantID);
+    static engage(sdkKey: string, googleProjectId: string, server: string, appID: string, tenantID: string) {
+        if (Platform.OS == 'ios') {
+            RNMappPluginModule.engageInapp(server);
+            return RNMappPluginModule.autoengage(server);
+        }
+        return RNMappPluginModule.engage(sdkKey, googleProjectId, server, appID, tenantID);
     }
 
-    /**
+      /**
      * On Init Completed Listener
      *
      * @return {Promise.<boolean>} A promise with the result.
      */
     static onInitCompletedListener(): Promise<boolean> {
-        return RNMappPluginModule.onInitCompletedListener();
+        if (Platform.OS == "android") {
+            return RNMappPluginModule.onInitCompletedListener();
+        }
+        return null;
     }
 
     /**
@@ -129,20 +158,15 @@ export class Mapp {
         return RNMappPluginModule.setAttributeInt(key, value);
     }
 
-    /**
-     * Set Custom Attribute
-     *
-     */
-    static setAttributeBoolean(key: string, value: boolean) {
-        return RNMappPluginModule.setAttributeBoolean(key, value);
-    }
 
     /**
      * Remove Custom Attribute
      * TODO: it is andoid only function
      */
     static removeAttribute(key: string) {
-        return RNMappPluginModule.removeAttribute(key);
+        if (Platform.OS == "android") {
+            return RNMappPluginModule.removeAttribute(key);
+        }
     }
 
     /**
@@ -188,9 +212,10 @@ export class Mapp {
         return RNMappPluginModule.getAttributeStringValue(value);
     }
 
-    /* TODO: This methosd is only available for Android */
     static lockScreenOrientation(value: boolean) {
-        return RNMappPluginModule.lockScreenOrientation(value);
+        if (Platform.OS == "android") {
+            return RNMappPluginModule.lockScreenOrientation(value);
+        }
     }
 
 
@@ -229,21 +254,26 @@ export class Mapp {
     }
 
     static triggerStatistic(templateId: number, originalEventId: string, trackingKey: string, displayMillis: number, reason: string, link): string {
-        return RNMappPluginModule.triggerStatistic(templateId, originalEventId, trackingKey, displayMillis, reason, link);
+        if (Platform.OS == "android") {
+            return RNMappPluginModule.triggerStatistic(templateId, originalEventId, trackingKey, displayMillis, reason, link);
+        }
+        return null;
     }
-// TODO: Android only
+
     static isDeviceRegistered(): Promise<boolean> {
         return RNMappPluginModule.isDeviceRegistered(value);
     }
-// TODO: iOS only
-    static removeDeviceAlias() {
-        return RNMappPluginModule.removeDeviceAlias();
-    }
-// TODO: iOS only
+
     static incrementNumericKey(key:String, value:number) {
-        return RNMappPluginModule.incrementNumericKey(key,value);
+        if (Platform.OS == "ios") {
+            return RNMappPluginModule.incrementNumericKey(key,value);
+        }
+        return null;
     }
 
+    static logOut(pushEnabled:Boolean) {
+        return RNMappPluginModule.logOut(pushEnabled);
+    }
 
     /**
      * Adds a custom event.
@@ -272,7 +302,9 @@ export class Mapp {
 
 
     static runAction(name: string, value: ?any): Promise<any> {
-        return RNMappPluginModule.runAction(name, value);
+        if (Platform.OS == "android") {
+            return RNMappPluginModule.runAction(name, value);
+        }
     }
 
     static addPushListener(listener: Function): EmitterSubscription {
@@ -283,6 +315,33 @@ export class Mapp {
         return this.addListener("deepLink", listener);
     }
 
+    static addInitListener(listener: Function): EmitterSubscription {
+        if (Platform.OS == "ios") {
+            return this.addListener("iosSDKInit", listener);
+        }
+        return null;
+    }
+
+    static addInboxMessagesListener(listener: Function): EmitterSubscription {
+        if (Platform.OS == "ios") {
+            return this.addListener("iosInboxMessages", listener);
+        }
+        return null;
+    }
+
+    static addInboxMessageListener(listener: Function): EmitterSubscription {
+        if (Platform.OS == "ios") {
+            return this.addListener("iosInboxMessage", listener);
+        }
+        return null;
+    }
+
+    static addRichMessagesListener(listener: Function): EmitterSubscription {
+        if (Platform.OS == "ios") {
+            return this.addListener("iosRichMessage", listener);
+        }
+        return null;
+    }
 
     static removePushListener(listener: Function): EmitterSubscription {
         return this.removeListener("notificationResponse", listener);

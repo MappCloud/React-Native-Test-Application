@@ -209,6 +209,9 @@ export default class App extends Component<Props> {
                   <MappButton
                       text={"Push listener"}
                       onPress={this.addPushListener}/>
+                  <MappButton
+                      text={"Log out"}
+                      onPress={this.logOut}/>
               </View>
             </ImageBackground>
           </ScrollView>
@@ -259,7 +262,14 @@ export default class App extends Component<Props> {
   };
   fetchInbox = () => {
     Mapp.fetchInboxMessage().then(data => {
-      Alert.alert(JSON.stringify(data))
+      if (Platform.OS == "ios") {
+        Mapp.addInboxMessagesListener(
+          (messages) => {
+            Alert.alert(JSON.stringify(messages))
+          });
+      } else {
+        Alert.alert(JSON.stringify(data))
+      }
     });
   };
   appOpenEvent = () => {
@@ -277,7 +287,14 @@ export default class App extends Component<Props> {
   fetchMultipleMessages = () => {
 
     Mapp.fetchInboxMessage().then(data => {
-      Alert.alert(JSON.stringify(data))
+      if (Platform.OS == "ios") {
+        Mapp.addInboxMessagesListener(
+          (messages) => {
+            Alert.alert(JSON.stringify(messages))
+          });
+      } else {
+        Alert.alert(JSON.stringify(data))
+      }
     });
   };
 
@@ -334,8 +351,9 @@ export default class App extends Component<Props> {
         });
     };
 
-
-
+  logOut = () => {
+    Mapp.logOut(true);
+  }
 }
 
 const styles = StyleSheet.create({
