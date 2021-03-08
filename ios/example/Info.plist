@@ -39,6 +39,8 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Provide your location to our SDK</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Provide your location to our SDK</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Provide your location to our SDK</string>
 	<key>NSLocationUsageDescription</key>
