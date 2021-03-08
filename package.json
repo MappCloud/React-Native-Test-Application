@@ -12,7 +12,7 @@
   "dependencies": {
     "react": "16.13.1",
     "react-native": "0.63.4",
-    "react-native-mapp-plugin": "file:../../react-native-plugin-v6",
+    "react-native-mapp-plugin": "github:MappCloud/React-native-plugin",
     "reinput": "^3.7.2"
   },
   "devDependencies": {
