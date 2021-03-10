@@ -10,7 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@mappcloud/react-native-mapp-plugin": "^1.0.0",
+    "react-native-mapp-plugin": "github:MappCloud/React-native-plugin",
     "react": "16.13.1",
     "react-native": "0.63.4",
     "reinput": "^3.7.2"
