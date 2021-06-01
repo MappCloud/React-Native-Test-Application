@@ -21,6 +21,8 @@ import {
 
 import {Mapp} from 'react-native-mapp-plugin';
 import {MappButton, MappInputText,} from './src/components';
+import * as AsyncStorage from "react-native/Libraries/Storage/AsyncStorage";
+
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -47,9 +49,31 @@ export default class App extends Component<Props> {
 
     constructor(props) {
         super(props);
+        this.storeData()
+        this.removeData()
         Mapp.engage("5fd76d903c2247.21400126", "1028993954364", "TEST", "264115", "33")
-
     }
+
+    storeData = async () => {
+        try {
+            await AsyncStorage.setItem(
+                'test123',
+                'I like to save it.'
+            );
+        } catch (error) {
+            // Error saving data
+        }
+    };
+
+    removeData = async () => {
+        try {
+            await AsyncStorage.removeItem(
+                'test123'
+            );
+        } catch (error) {
+            // Error saving data
+        }
+    };
 
     handleTextChange = (type) => (text) => {
         this.setState({[type]: text});
