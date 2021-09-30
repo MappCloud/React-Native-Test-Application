@@ -24,6 +24,7 @@ import {MappButton, MappInputText} from './src/components';
 import FBMessaging, {firebase} from '@react-native-firebase/messaging';
 import Clipboard from '@react-native-clipboard/clipboard';
 import Toast from 'react-native-simple-toast';
+import {version as appVersion} from './app.json';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -53,14 +54,14 @@ const handleFirebasePushMessage = async (remoteMessage) => {
  * Mapp.engage() must be called here, before of a FBMessaging().setBackgroundMessageHanlder()
  * otherwise exception is thrown in native Java code (Appoxee.instance is not initialized!!!)
  */
-Mapp.engage('17c12566d0e614.60317593', '785651527831', 'L3', '206793', '5963');
-// Mapp.engage(
-//   '17c07c2d350614.65753469',
-//   '785651527831',
-//   'TEST_55',
-//   '300012',
-//   '55',
-// );
+//Mapp.engage('17c12566d0e614.60317593', '785651527831', 'L3', '206793', '5963');
+Mapp.engage(
+  '17c07c2d350614.65753469',
+  '785651527831',
+  'TEST_55',
+  '300012',
+  '55',
+);
 /**
  * setBackgroundMessageHandler must be called outside of application class as soon as posible
  * so that application properly receive firebase messages in quit state.
@@ -82,13 +83,6 @@ export default class App extends Component<Props> {
 
   constructor(props) {
     super(props);
-    /*     Mapp.engage(
-      '5fd76d903c2247.21400126',
-      '1028993954364',
-      'TEST',
-      '264115',
-      '33',
-    ); */
     FBMessaging().onMessage(handleFirebasePushMessage);
     this.getToken();
   }
@@ -109,7 +103,7 @@ export default class App extends Component<Props> {
             backgroundColor={'black'}>
             <View style={styles.container}>
               <Text style={styles.welcome}>
-                Welcome to React Native Mapp plugin!
+                Welcome to React Native Mapp plugin! v.{appVersion}
               </Text>
               <MappInputText
                 maxLength={255}

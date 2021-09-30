@@ -1,4 +1,5 @@
 {
   "name": "example",
-  "displayName": "example"
+  "displayName": "example",
+  "version":"1.0.4-beta3"
 }
