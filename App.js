@@ -55,12 +55,19 @@ const handleFirebasePushMessage = async (remoteMessage) => {
  * otherwise exception is thrown in native Java code (Appoxee.instance is not initialized!!!)
  */
 //Mapp.engage('17c12566d0e614.60317593', '785651527831', 'L3', '206793', '5963');
+// Mapp.engage(
+//   '17c07c2d350614.65753469',
+//   '785651527831',
+//   'TEST_55',
+//   '300012',
+//   '55',
+// );
 Mapp.engage(
-  '17c07c2d350614.65753469',
+  '17c3afb9034615.81138207',
   '785651527831',
-  'TEST_55',
-  '300012',
-  '55',
+  'EMC_US',
+  '310394',
+  '60211',
 );
 /**
  * setBackgroundMessageHandler must be called outside of application class as soon as posible
