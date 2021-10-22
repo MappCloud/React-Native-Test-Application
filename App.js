@@ -63,11 +63,11 @@ const handleFirebasePushMessage = async (remoteMessage) => {
 //   '55',
 // );
 Mapp.engage(
-  '17c3afb9034615.81138207',
+  '17ca397df03617.43841357',
   '785651527831',
-  'EMC_US',
-  '310394',
-  '60211',
+  'EMC',
+  '206729',
+  '22389',
 );
 /**
  * setBackgroundMessageHandler must be called outside of application class as soon as posible
