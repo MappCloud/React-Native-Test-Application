@@ -63,17 +63,17 @@ const handleFirebasePushMessage = async (remoteMessage) => {
 //   '55',
 // );
 Mapp.engage(
-  '17c3afb9034615.81138207',
+  '17ca3967a97617.87944756',
   '785651527831',
-  'EMC_US',
-  '310394',
-  '60211',
-);
+  'EMC',
+  '206728',
+  '22.389',
+);//the last one is dmc_system_id
 /**
  * setBackgroundMessageHandler must be called outside of application class as soon as posible
  * so that application properly receive firebase messages in quit state.
  */
-FBMessaging().setBackgroundMessageHandler(handleFirebasePushMessage);
+//FBMessaging().setBackgroundMessageHandler(handleFirebasePushMessage);
 
 export default class App extends Component<Props> {
   state = {
@@ -90,7 +90,7 @@ export default class App extends Component<Props> {
 
   constructor(props) {
     super(props);
-    FBMessaging().onMessage(handleFirebasePushMessage);
+    //FBMessaging().onMessage(handleFirebasePushMessage);
     this.getToken();
   }
 
@@ -258,16 +258,16 @@ export default class App extends Component<Props> {
   }
 
   getToken = () => {
-    const token = async () => {
-      const token = await FBMessaging().getToken();
-      this.setState((state) => ({
-        ...state,
-        firebaseToken: token,
-      }));
-      console.log(token);
-      Mapp.setToken(token);
-    };
-    token();
+    // const token = async () => {
+    //   const token = await FBMessaging().getToken();
+    //   this.setState((state) => ({
+    //     ...state,
+    //     firebaseToken: token,
+    //   }));
+    //   console.log(token);
+    //   Mapp.setToken(token);
+    // };
+    // token();
   };
 
   showToken = () => {
