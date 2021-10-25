@@ -21,7 +21,6 @@ import {
 
 import {Mapp} from 'react-native-mapp-plugin';
 import {MappButton, MappInputText} from './src/components';
-import FBMessaging, {firebase} from '@react-native-firebase/messaging';
 import Clipboard from '@react-native-clipboard/clipboard';
 import Toast from 'react-native-simple-toast';
 import {version as appVersion} from './app.json';
@@ -37,18 +36,6 @@ const instructions = Platform.select({
  * Copyright (c) 2019 MAPP.
  */
 type Props = {};
-
-/**
- * Handler method for receiving firebase push messages
- * Same method is used as a delegate for a setBackgroundMessageHandler() and onMessage()
- */
-const handleFirebasePushMessage = async (remoteMessage) => {
-  console.log(remoteMessage);
-  Mapp.setRemoteMessage(remoteMessage);
-  Mapp.isPushFromMapp(remoteMessage).then((p) => {
-    console.log('Is push from MAPP', p);
-  });
-};
 
 /**
  * Mapp.engage() must be called here, before of a FBMessaging().setBackgroundMessageHanlder()
@@ -69,11 +56,6 @@ Mapp.engage(
   '206729',
   '22389',
 );
-/**
- * setBackgroundMessageHandler must be called outside of application class as soon as posible
- * so that application properly receive firebase messages in quit state.
- */
-FBMessaging().setBackgroundMessageHandler(handleFirebasePushMessage);
 
 export default class App extends Component<Props> {
   state = {
@@ -90,8 +72,6 @@ export default class App extends Component<Props> {
 
   constructor(props) {
     super(props);
-    FBMessaging().onMessage(handleFirebasePushMessage);
-    this.getToken();
   }
 
   handleTextChange = (type) => (text) => {
@@ -256,19 +236,6 @@ export default class App extends Component<Props> {
       </SafeAreaView>
     );
   }
-
-  getToken = () => {
-    const token = async () => {
-      const token = await FBMessaging().getToken();
-      this.setState((state) => ({
-        ...state,
-        firebaseToken: token,
-      }));
-      console.log(token);
-      Mapp.setToken(token);
-    };
-    token();
-  };
 
   showToken = () => {
     Alert.alert('Token', this.state.firebaseToken);
