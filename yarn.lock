@@ -5796,10 +5796,10 @@ react-native-iphone-x-helper@^1.2.1:
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"
   integrity sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg==
 
-react-native-mapp-plugin@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/react-native-mapp-plugin/-/react-native-mapp-plugin-1.0.4.tgz#90aa27a3d68031a2f4772d2e74ce2ce32a9a70ce"
-  integrity sha512-M6wK18hij6/39tpP5Xx10gmPhYWfHE1XofDRLdnbOCbPzvkT3G0fs0EcrDkdmU6mvGfX0eDPSojA7CgEKhNlew==
+react-native-mapp-plugin@1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/react-native-mapp-plugin/-/react-native-mapp-plugin-1.0.7.tgz#f32bbb199007e7dbda5657f5fe618872b3cd6a08"
+  integrity sha512-69W3U567x1g5WzLR1YiCy10HJeehpbIlh4ALiRsurFHbSBMJiuy6FrYjs4AM8I1cOc9R92mPVRnu4hcNP2Q0Hg==
 
 react-native-reanimated@^2.1.0:
   version "2.2.2"
