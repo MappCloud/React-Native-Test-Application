@@ -62,13 +62,7 @@ const handleFirebasePushMessage = async (remoteMessage) => {
 //   '300012',
 //   '55',
 // );
-Mapp.engage(
-  '17c3afb9034615.81138207',
-  '785651527831',
-  'EMC_US',
-  '310394',
-  '60211',
-);
+Mapp.engage('17d09eb9903618.30242929', '785651527831', 'TEST', '300551', '33');
 /**
  * setBackgroundMessageHandler must be called outside of application class as soon as posible
  * so that application properly receive firebase messages in quit state.
@@ -310,12 +304,35 @@ export default class App extends Component<Props> {
   optOut = () => {
     Mapp.setPushEnabled(false);
   };
+
+  requestPermissions = () => {
+    Mapp.requestGeofenceLocationPermissions()
+      .then((result) => {})
+      .catch((error) => {});
+  };
+
   startGeo = () => {
-    Mapp.startGeoFencing();
+    Mapp.startGeofencing()
+      .then((result) => {
+        console.log(result);
+        Alert.alert('Geofencing start', result);
+      })
+      .catch((code, error) => {
+        console.log(code, error);
+      });
   };
+
   stopGeo = () => {
-    Mapp.stopGeoFencing();
+    Mapp.stopGeofencing()
+      .then((result) => {
+        console.log(result);
+        Alert.alert('Geofencing stop', result);
+      })
+      .catch((code, error) => {
+        console.log(code, error);
+      });
   };
+
   fetchInbox = () => {
     Mapp.fetchInboxMessage().then((data) => {
       if (Platform.OS == 'ios') {
