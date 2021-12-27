@@ -62,7 +62,16 @@ const handleFirebasePushMessage = async (remoteMessage) => {
 //   '300012',
 //   '55',
 // );
-Mapp.engage('17d09eb9903618.30242929', '785651527831', 'TEST', '300551', '33');
+
+//  static engage(sdkKey: string, googleProjectId: string, server: string, appID: string, tenantID: string)
+Mapp.engage(
+  '17dc242eb7761b.23098556',
+  '785651527831',
+  'EMC_US',
+  '310412',
+  '60211',
+);
+
 /**
  * setBackgroundMessageHandler must be called outside of application class as soon as posible
  * so that application properly receive firebase messages in quit state.
