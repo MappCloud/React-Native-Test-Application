@@ -65,10 +65,10 @@ const handleFirebasePushMessage = async (remoteMessage) => {
 
 //  static engage(sdkKey: string, googleProjectId: string, server: string, appID: string, tenantID: string)
 Mapp.engage(
-  '17dc242eb7761b.23098556',
+  '17e246d494161d.59387323',
   '785651527831',
   'EMC_US',
-  '310412',
+  '310421',
   '60211',
 );
 
@@ -95,6 +95,7 @@ export default class App extends Component<Props> {
     super(props);
     FBMessaging().onMessage(handleFirebasePushMessage);
     this.getToken();
+    this.addDeeplink();
   }
 
   handleTextChange = (type) => (text) => {
@@ -426,15 +427,15 @@ export default class App extends Component<Props> {
     Mapp.addDeepLinkingListener((notification) => {
       let action = notification.action;
       let url1 = notification.url;
-      // console.log(notification);
-      // Alert.alert(notification)
+      console.log(notification);
       const uri = new URL(url1);
       const link = uri.searchParams.get('link');
       const message_id = uri.searchParams.get('message_id');
-      this.props.navigation.navigate('Home', {
+      Alert.alert(JSON.stringify(url1));
+      /*       this.props.navigation.navigate('Home', {
         myLink: link,
         message_id: message_id,
-      });
+      }); */
     });
   };
   addPushListener = () => {
