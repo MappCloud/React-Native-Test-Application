@@ -290,20 +290,20 @@ export default class App extends Component<Props> {
   getAlias = () => {
     Mapp.getAlias().then((data) => {
       console.log(data);
-      Alert.alert(data);
+      Alert.alert("Alias",data);
     });
   };
 
   isPushEnabled = () => {
     Mapp.isPushEnabled().then((data) => {
       console.log(data);
-      Alert.alert(data.toString());
+      Alert.alert("Push enabled",data.toString());
     });
   };
 
   getDevice = () => {
     Mapp.getDeviceInfo().then((data) => {
-      Alert.alert(JSON.stringify(data));
+      Alert.alert("Device info",JSON.stringify(data));
     });
   };
 
@@ -347,10 +347,10 @@ export default class App extends Component<Props> {
     Mapp.fetchInboxMessage().then((data) => {
       if (Platform.OS == 'ios') {
         Mapp.addInboxMessagesListener((messages) => {
-          Alert.alert(JSON.stringify(messages));
+          Alert.alert("Inbox message",JSON.stringify(messages));
         });
       } else {
-        Alert.alert(JSON.stringify(data));
+        Alert.alert('Inbox message', JSON.stringify(data));
       }
     });
   };
@@ -429,15 +429,16 @@ export default class App extends Component<Props> {
       let url1 = notification.url;
       console.log(notification);
       const uri = new URL(url1);
-      const link = uri.searchParams.get('link');
-      const message_id = uri.searchParams.get('message_id');
-      Alert.alert(JSON.stringify(url1));
-      /*       this.props.navigation.navigate('Home', {
+      const link = url1;
+      const message_id = action;
+      //Alert.alert(JSON.stringify(url1));
+      this.props.navigation.navigate('Home', {
         myLink: link,
         message_id: message_id,
-      }); */
+      });
     });
   };
+
   addPushListener = () => {
     Mapp.addPushListener((notification) => {
       console.log(JSON.stringify(notification));
