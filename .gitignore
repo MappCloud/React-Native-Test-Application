@@ -24,6 +24,7 @@ DerivedData
 # Android/IntelliJ
 #
 build/
+*.aab
 .idea
 .gradle
 local.properties
@@ -60,3 +61,4 @@ package-lock.json
 
 # CocoaPods
 /ios/Pods/
+
