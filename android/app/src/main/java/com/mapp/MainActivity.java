@@ -1,4 +1,4 @@
-package com.example;
+package com.mapp;
 
 import com.facebook.react.ReactActivity;
 
