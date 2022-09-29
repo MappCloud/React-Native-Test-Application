@@ -1,4 +1,4 @@
-package com.mapp;
+package com.mapp.rn;
 
 import android.app.Application;
 import android.content.Context;

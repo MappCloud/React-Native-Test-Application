@@ -65,11 +65,11 @@ const handleFirebasePushMessage = async (remoteMessage) => {
 
 //  static engage(sdkKey: string, googleProjectId: string, server: string, appID: string, tenantID: string)
 Mapp.engage(
-  '181dcae619262c.50504750',
+  '18364388c4d632.89697073',
   '785651527831',
-  'EMC_US',
-  '310491',
-  '60211',
+  'TEST',
+  '300891',
+  '33',
 );
 
 
