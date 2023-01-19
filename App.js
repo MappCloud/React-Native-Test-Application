@@ -17,10 +17,11 @@ import {
   ImageBackground,
   SafeAreaView,
   Alert,
+  TextInput,
 } from 'react-native';
 
 import {Mapp} from 'react-native-mapp-plugin';
-import {MappButton, MappInputText} from './src/components';
+import {MappButton} from './src/components';
 import FBMessaging, {firebase} from '@react-native-firebase/messaging';
 import Clipboard from '@react-native-clipboard/clipboard';
 import Toast from 'react-native-simple-toast';
@@ -65,11 +66,11 @@ const handleFirebasePushMessage = async (remoteMessage) => {
 
 //  static engage(sdkKey: string, googleProjectId: string, server: string, appID: string, tenantID: string)
 Mapp.engage(
-  '181dcae619262c.50504750',
+  '183408d0cd3632.83592719',
   '785651527831',
-  'EMC_US',
-  '310491',
-  '60211',
+  'L3',
+  '206974',
+  '5963',
 );
 
 
@@ -117,7 +118,8 @@ export default class App extends Component<Props> {
               <Text style={styles.welcome}>
                 Welcome to React Native Mapp plugin! v.{appVersion}
               </Text>
-              <MappInputText
+              <TextInput
+                style={styles.input}
                 maxLength={255}
                 label="Set Device Alias"
                 autoCorrect={false}
@@ -174,7 +176,8 @@ export default class App extends Component<Props> {
               />
               <MappButton text={'Get Tags'} onPress={this.getTags} />
 
-              <MappInputText
+              <TextInput
+                style={styles.input}
                 maxLength={255}
                 label="Set Tags"
                 autoCorrect={false}
@@ -186,7 +189,8 @@ export default class App extends Component<Props> {
               />
               <MappButton text={'Set Tags'} onPress={this.setTagsEvent} />
 
-              <MappInputText
+              <TextInput
+                style={styles.input}
                 maxLength={255}
                 label="Remove Tags"
                 autoCorrect={false}
@@ -197,7 +201,8 @@ export default class App extends Component<Props> {
                 errorMessage={state.defaultErrorMessage}
               />
               <MappButton text={'Remove Tag'} onPress={this.removeTagEvent} />
-              <MappInputText
+              <TextInput
+                style={styles.input}
                 maxLength={255}
                 label="Set Attribute"
                 autoCorrect={false}
@@ -211,7 +216,8 @@ export default class App extends Component<Props> {
                 text={'Set Attribute'}
                 onPress={this.setAttributeEvent}
               />
-              <MappInputText
+              <TextInput
+                style={styles.input}
                 maxLength={255}
                 label="Get Attribute"
                 autoCorrect={false}
@@ -225,7 +231,8 @@ export default class App extends Component<Props> {
                 text={'Get Attribute'}
                 onPress={this.getAttributeEvent}
               />
-              <MappInputText
+              <TextInput
+                style={styles.input}
                 maxLength={255}
                 label="Remove Attribute"
                 autoCorrect={false}
@@ -490,5 +497,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
+  },
+  input: {
+    fontSize:20,
+    marginVertical:5,
+    backgroundColor:'#FFFFFF',
+    borderWidth: 1,
+    paddingHorizontal: 10,
   },
 });
