@@ -1,4 +1,18 @@
 {
+  "expo": {
+    "name": "Mapp RN Test App",
+    "icon": "android/app/src/main/ic_launcher-playstore.png",
+    "version": "1.0.5",
+    "slug": "react-native-test-app",
+    "ios": {
+      "bundleIdentifier": "com.mapp.rn",
+      "buildNumber": "1.0.5"
+    },
+    "android": {
+      "package": "com.mapp.rn",
+      "versionCode": 5
+    }
+  },
   "name": "example",
   "displayName": "example",
   "version":"1.0.11-beta12"
