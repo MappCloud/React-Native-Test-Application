@@ -43,10 +43,10 @@ type Props = {};
  * Handler method for receiving firebase push messages
  * Same method is used as a delegate for a setBackgroundMessageHandler() and onMessage()
  */
-const handleFirebasePushMessage = async (remoteMessage) => {
+const handleFirebasePushMessage = async remoteMessage => {
   console.log(remoteMessage);
   Mapp.setRemoteMessage(remoteMessage);
-  Mapp.isPushFromMapp(remoteMessage).then((p) => {
+  Mapp.isPushFromMapp(remoteMessage).then(p => {
     console.log('Is push from MAPP', p);
   });
 };
@@ -65,14 +65,7 @@ const handleFirebasePushMessage = async (remoteMessage) => {
 // );
 
 //  static engage(sdkKey: string, googleProjectId: string, server: string, appID: string, tenantID: string)
-Mapp.engage(
-  '183408d0cd3632.83592719',
-  '785651527831',
-  'L3',
-  '206974',
-  '5963',
-);
-
+Mapp.engage('183408d0cd3632.83592719', '785651527831', 'L3', '206974', '5963');
 
 /**
  * setBackgroundMessageHandler must be called outside of application class as soon as posible
@@ -100,7 +93,7 @@ export default class App extends Component<Props> {
     this.addDeeplink();
   }
 
-  handleTextChange = (type) => (text) => {
+  handleTextChange = type => text => {
     this.setState({[type]: text});
   };
 
@@ -272,7 +265,7 @@ export default class App extends Component<Props> {
   getToken = () => {
     const token = async () => {
       const token = await FBMessaging().getToken();
-      this.setState((state) => ({
+      this.setState(state => ({
         ...state,
         firebaseToken: token,
       }));
@@ -296,22 +289,22 @@ export default class App extends Component<Props> {
   };
 
   getAlias = () => {
-    Mapp.getAlias().then((data) => {
+    Mapp.getAlias().then(data => {
       console.log(data);
-      Alert.alert("Alias",data);
+      Alert.alert('Alias', data);
     });
   };
 
   isPushEnabled = () => {
-    Mapp.isPushEnabled().then((data) => {
+    Mapp.isPushEnabled().then(data => {
       console.log(data);
-      Alert.alert("Push enabled",data.toString());
+      Alert.alert('Push enabled', data.toString());
     });
   };
 
   getDevice = () => {
-    Mapp.getDeviceInfo().then((data) => {
-      Alert.alert("Device info",JSON.stringify(data));
+    Mapp.getDeviceInfo().then(data => {
+      Alert.alert('Device info', JSON.stringify(data));
     });
   };
 
@@ -325,13 +318,13 @@ export default class App extends Component<Props> {
 
   requestPermissions = () => {
     Mapp.requestGeofenceLocationPermissions()
-      .then((result) => {})
-      .catch((error) => {});
+      .then(result => {})
+      .catch(error => {});
   };
 
   startGeo = () => {
     Mapp.startGeofencing()
-      .then((result) => {
+      .then(result => {
         console.log(result);
         Alert.alert('Geofencing start', result);
       })
@@ -342,7 +335,7 @@ export default class App extends Component<Props> {
 
   stopGeo = () => {
     Mapp.stopGeofencing()
-      .then((result) => {
+      .then(result => {
         console.log(result);
         Alert.alert('Geofencing stop', result);
       })
@@ -352,10 +345,10 @@ export default class App extends Component<Props> {
   };
 
   fetchInbox = () => {
-    Mapp.fetchInboxMessage().then((data) => {
+    Mapp.fetchInboxMessage().then(data => {
       if (Platform.OS == 'ios') {
-        Mapp.addInboxMessagesListener((messages) => {
-          Alert.alert("Inbox message",JSON.stringify(messages));
+        Mapp.addInboxMessagesListener(messages => {
+          Alert.alert('Inbox message', JSON.stringify(messages));
         });
       } else {
         Alert.alert('Inbox message', JSON.stringify(data));
@@ -375,9 +368,9 @@ export default class App extends Component<Props> {
     Mapp.triggerInApp('app_promo');
   };
   fetchMultipleMessages = () => {
-    Mapp.fetchInboxMessage().then((data) => {
+    Mapp.fetchInboxMessage().then(data => {
       if (Platform.OS == 'ios') {
-        Mapp.addInboxMessagesListener((messages) => {
+        Mapp.addInboxMessagesListener(messages => {
           Alert.alert(JSON.stringify(messages));
         });
       } else {
@@ -387,7 +380,7 @@ export default class App extends Component<Props> {
   };
 
   getTags = () => {
-    Mapp.getTags().then((data) => {
+    Mapp.getTags().then(data => {
       Alert.alert(JSON.stringify(data));
     });
   };
@@ -403,7 +396,7 @@ export default class App extends Component<Props> {
     Mapp.setAttributeString('test', this.state.addAttribute);
   };
   getAttributeEvent = () => {
-    Mapp.getAttributeStringValue('test').then((data) => {
+    Mapp.getAttributeStringValue('test').then(data => {
       Alert.alert(data);
     });
   };
@@ -432,7 +425,7 @@ export default class App extends Component<Props> {
   };
 
   addDeeplink = () => {
-    Mapp.addDeepLinkingListener((notification) => {
+    Mapp.addDeepLinkingListener(notification => {
       let action = notification.action;
       let url1 = notification.url;
       console.log(notification);
@@ -448,7 +441,7 @@ export default class App extends Component<Props> {
   };
 
   addPushListener = () => {
-    Mapp.addPushListener((notification) => {
+    Mapp.addPushListener(notification => {
       console.log(JSON.stringify(notification));
       Alert.alert(JSON.stringify(notification));
     });
@@ -499,9 +492,9 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   input: {
-    fontSize:20,
-    marginVertical:5,
-    backgroundColor:'#FFFFFF',
+    fontSize: 20,
+    marginVertical: 5,
+    backgroundColor: '#FFFFFF',
     borderWidth: 1,
     paddingHorizontal: 10,
   },
