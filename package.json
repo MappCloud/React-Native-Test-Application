@@ -13,8 +13,6 @@
   "dependencies": {
     "@react-native-clipboard/clipboard": "^1.8.4",
     "@react-native-community/masked-view": "^0.1.11",
-    "@react-native-firebase/app": "^8.4.5",
-    "@react-native-firebase/messaging": "^7.9.2",
     "@react-navigation/core": "^5.1.5",
     "@react-navigation/native": "5.0.6",
     "@react-navigation/native-stack": "5.0.5",
@@ -25,7 +23,7 @@
     "react": "18.1.0",
     "react-native": "0.70.5",
     "react-native-gesture-handler": "^1.10.3",
-    "react-native-mapp-plugin": "1.0.11-beta12",
+    "react-native-mapp-plugin": "1.1.1",
     "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "2.18.1",
     "react-native-simple-toast": "^1.1.3",
